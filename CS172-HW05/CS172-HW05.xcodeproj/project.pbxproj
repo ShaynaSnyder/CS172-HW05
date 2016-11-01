@@ -246,6 +246,7 @@
 				220DFB841DC9260B0032F70B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
