@@ -7,6 +7,8 @@
 #include <iomanip>
 #include <cstdlib>
 #include <string>
+#include <vector>
+#include <climits>
 
 using namespace std;
 
@@ -19,6 +21,11 @@ int linearSearch(T list[], const T key, int arraySize);
 template<typename T>
 //declares bool function isSorted
 bool isSorted(const T list[], int size);
+
+//template prefix
+template <typename T>
+//declares void function shuffle that shuffles the contents in a vector
+void shuffle(vector<T>& v);
 
 int main()
 {
@@ -56,6 +63,14 @@ int main()
     
     
     //12.20 Shuffle vector
+    //defines vector object named testVector
+    vector<int> testVector(10);
+    cout << "Input 10 integer values into a vector:";
+    //Store user input to the vector using a for loop
+    for(int i=0; i<10; i++)
+        cin >> testVector[i];
+    //calls shuffle function
+    shuffle(testVector);
     
     
     //12.25 New Account class
@@ -95,4 +110,25 @@ bool isSorted(const T list[], int size)
     //returns true otherwise
     return true;
     
+}
+
+//template prefix
+template <typename T>
+//defines void function shuffle that shuffles the contents in a vector
+void shuffle(vector<T>& v)
+{
+    unsigned long int longVsize = v.size();
+    int vsize = longVsize & INT_MAX;
+    //uses for loop and temporary value holder to swap values
+    cout << "The shuffled result is: ";
+    for(int i=0; i<vsize; i++)
+    {
+        int r = rand()%vsize;
+        T x = v[r];
+        v[r] = v[i];
+        v[i] = x;
+    }
+    //sends out shuffled values for the vector
+    for(int j=0; j<vsize; j++)
+        cout << v[j] << endl;
 }
